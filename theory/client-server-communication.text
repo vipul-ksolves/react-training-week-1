@@ -1,0 +1,9 @@
+API: Programming Interfaces enable software to interact with other software through exposed functionality.
+
+Client: The client is the initiating party that sends an API request. Often times there will be many clients consuming the same API.
+
+Server: The server is software or hardware that provides a service by responding to requests across a network.
+
+HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview/fetching_a_page.png
