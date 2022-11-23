@@ -1,9 +1,60 @@
+Client/Server communication involves two components, namely a client and a server. 
+They are usually multiple clients in communication with a single server. 
+The clients send requests to the server and the server responds to the client requests.
+
 API: Programming Interfaces enable software to interact with other software through exposed functionality.
 
-Client: The client is the initiating party that sends an API request. Often times there will be many clients consuming the same API.
+Client: The client is the initiating party that sends an API request. 
+    Often times there will be many clients consuming the same API.
 
 Server: The server is software or hardware that provides a service by responding to requests across a network.
 
-HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
+HTTP is a protocol for fetching resources such as HTML documents. 
+It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. 
+A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview/fetching_a_page.png
+
+
+Main points
+    1. Client-server communication Model
+    2. The HTTP (Hypertext Transfer Protocol) is a communication protocol
+    3. Markup Languages
+
+# HTTP & Client-Server Communication
+    Hypertext Transfer Protocol (HTTP) is the protocol that web browsers and web servers use "under the hood" to communicate with each other over the Internet. 
+    It is text based. HTTP is a protocol which allows the fetching of resources, such as HTML documents. 
+    After the request is serviced by a server, the connection between client and server across the Internet is disconnected. 
+    A new connection must be made for each request. Most protocols are connection oriented, where the connection is kept open over the Internet. 
+    HTTP does not however. Before an HTTP request can be made by a client, a new connection must be made to the server.
+
+    Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). 
+    The messages sent by the client, usually a Web browser, are called requests and the messages sent by the server as an answer are called responses. 
+    A request is made by an entity called a user-agent, which is typically a web browser however can be a bot or scraper. ]
+    The server answer with a response. In between can be any number of proxies or caches that can act as gateways.
+
+    HTTP is stateless, which means inherently data isn’t saved. HTTP cookies allow use of stateful sessions. 
+    This might be used for example with an e-commerce website as you click from page to page.
+
+
+HTTP Request
+Requests consists of the following elements1:
+
+    1. An HTTP method, usually a verb like GET, POST or a noun like OPTIONS or HEAD that defines the operation the client wants to perform. 
+        Typically, a client wants to fetch a resource (using GET) or post the value of an HTML form (using POST), though more operations may be needed in other cases.
+    2. The path of the resource to fetch; the URL of the resource stripped from elements that are obvious from the context, 
+        for example without the protocol (http://), the domain (here, developer.mozilla.org), or the TCP port (here, 80).
+    3. The version of the HTTP protocol.
+    4. Optional headers that convey additional information for the servers.
+    5. Or a body, for some methods like POST, similar to those in responses, which contain the resource sent.
+
+
+
+HTTP Response
+Responses consist of the following elements:
+
+    1. The version of the HTTP protocol they follow.
+    2. A status code, indicating if the request was successful, or not, and why.
+    3. A status message, a non-authoritative short description of the status code.
+    4. HTTP headers, like those for requests.
+    5. Optionally, a body containing the fetched resource.
