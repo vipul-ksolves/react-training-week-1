@@ -1,0 +1,117 @@
+# What is JSON?
+
+1. JSON stands for JavaScript Object Notation
+2. JSON is a lightweight data interchange format
+3. JSON is language independent *
+4. JSON is "self-describing" and easy to understand
+5. It is a collection of key-value pairs where the key must be a string type, 
+    and the value can be of any of the following types:
+    a. Number
+    b. String
+    c. Boolean
+    d. Array
+    e. Object
+    f. null
+
+6. A couple of important rules to note:
+    a. In the JSON data format, the keys must be enclosed in double quotes.
+    b. The key and value must be separated by a colon (:) symbol.
+    c. There can be multiple key-value pairs. Two key-value pairs must be separated by a comma (,) symbol.
+    d. No comments (// or /* */) are allowed in JSON data. (But you can get around that, if you're curious.)
+    
+    Here is how some simple JSON data looks:
+
+        {
+            "name": "Alex C",
+            "age": 2,
+            "city": "Houston"
+        }
+
+7. Valid JSON data can be in two different formats:
+    a. A collection of key-value pairs enclosed by a pair of curly braces {...}. You saw this as an example above.
+    b. A collection of an ordered list of key-value pairs separated by comma (,) 
+        and enclosed by a pair of square brackets [...]. See the example below:
+
+        [
+            {
+                "name": "Alex C",
+                "age": 2,
+                "city": "Houston"
+            },
+            {
+                "name": "John G",
+                "age": 40,
+                "city": "Washington"
+            },
+            {
+                "name": "Bala T",
+                "age": 22,
+                "city": "Bangalore"
+            }
+        ]
+
+
+*Note:-  The JSON syntax is derived from JavaScript object notation syntax, 
+    but the JSON format is text only. Code for reading and generating JSON data can be written in any programming language.
+
+
+
+# How to Use JSON Data as a String Value ?
+1. We can use JSON data as a string value and assign it to a variable. 
+2. As JSON is a text-based format, it is possible to handle as a string in most programming languages.
+
+    Ex.  const user = '{"name": "Alex C", "age": 2, "city": "Houston"}';
+        
+        JSON formatting intact]
+
+        const user = `{
+            "name": "Alex C",
+            "age": 2,
+            "city": "Houston"
+        }`;
+
+
+# JavaScript Objects and JSON are NOT the Same
+1. The JSON data format is derived from the JavaScript object structure. 
+    But the similarity ends there.
+
+    Objects in JavaScript:
+
+    a. Can have methods, and JSON can't.
+    b. The keys can be without quotes.
+    c. Comments are allowed.
+    d. Are JavaScript's own entity.
+
+
+# How to Convert JSON Data to a JavaScript Object
+    To convert JSON data into a JavaScript object, use the JSON.parse() method. 
+    It parses a valid JSON string into a JavaScript object.
+
+    const userJSONData = `{
+        "name": "Alex C",
+        "age": 2,
+        "city": "Houston"
+    }`;
+
+    const userObj = JSON.parse(userJSONData);
+    console.log(userObj);
+
+    Output :
+    https://www.freecodecamp.org/news/content/images/2021/12/first.png
+
+
+# How to Convert a JavaScript Object to JSON Data
+    To convert a JavaScript object into JSON data, use the JSON.stringify() method.
+
+    const userObj = {
+        name: 'Alex C', 
+        age: 2, 
+        city: 'Houston'
+    }
+
+    const userJSONData = JSON.stringify(userObj);
+    console.log(userJSONData);
+
+    Output:
+    https://www.freecodecamp.org/news/content/images/2021/12/second.png
+
