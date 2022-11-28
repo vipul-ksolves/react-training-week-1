@@ -1,5 +1,8 @@
-.card {
+* {
+  box-sizing: border-box;
+  font-family: "Fira sans", sans-serif;
 }
+
 .container-header {
   height: 80px;
   border-bottom: 1px solid #fff;
