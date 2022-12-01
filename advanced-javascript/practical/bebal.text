@@ -1,0 +1,16 @@
+/* 
+BabelJS is a JavaScript transpiler which transpiles new features into old standard. With this, the features can be run on both old and new browsers, hassle-free. An Australian developer, Sebastian McKenzie started BabelJS.
+
+
+## BabelJS manages the following two parts −
+    transpiling
+    polyfilling
+
+
+Advantages of using BabelJS
+    1) BabelJS has the ability to transpile to take the next upcoming version of JavaScript - ES6, ES7, ESNext, etc.
+
+    2) BabelJS can be used along with gulp, webpack, flow, react, typescript, etc. making it very powerful and can be used with big project making developer’s life easy.
+
+    3)BabelJS also works along with react JSX syntax and can be compiled in JSX form.
+*/
