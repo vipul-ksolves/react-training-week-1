@@ -1,0 +1,68 @@
+Why use modules?
+
+1) Maintainability: By definition, a module is self-contained. A well-designed module aims to lessen the dependencies on parts of the codebase as much as possible, so that it can grow and improve independently. Updating a single module is much easier when the module is decoupled from other pieces of code.
+
+
+2) Namespacing: In JavaScript, variables outside the scope of a top-level function are global (meaning, everyone can access them). Because of this, it’s common to have “namespace pollution”, where completely unrelated code shares global variables.
+
+3) Reusability: Let’s be honest here: we’ve all copied code we previously wrote into new projects at one point or another. For example, let’s imagine you copied some utility methods you wrote from a previous project to your current project.
+
+
+##
+Module pattern
+
+1) CommonJS
+
+A CommonJS module is essentially a reusable piece of JavaScript which exports specific objects, making them available for other modules to require in their programs. If you’ve programmed in Node.js, you’ll be very familiar with this format.
+
+With CommonJS, each JavaScript file stores modules in its own unique module context (just like wrapping it in a closure). In this scope, we use the module.exports object to expose modules, and require to import them.
+
+When you’re defining a CommonJS module, it might look something like this:
+
+    function myModule() {
+        this.hello = function() {
+            return 'hello!';
+        }
+
+        this.goodbye = function() {
+            return 'goodbye!';
+        }
+    }
+
+    module.exports = myModule;
+
+
+Then when someone wants to use myModule, they can require it in their file, like so:
+       
+        var myModule = require('myModule');
+
+        var myModuleInstance = new myModule();
+        myModuleInstance.hello(); // 'hello!'
+        myModuleInstance.goodbye(); // 'goodbye!'
+
+
+2) ECMAScript 6 (ES6).
+
+    // lib/counter.js
+    export let counter = 1;
+
+    export function increment() {
+    counter++;
+    }
+
+    export function decrement() {
+    counter--;
+    }
+
+
+    // src/main.js
+    import * as counter from '../../counter';
+
+    console.log(counter.counter); // 1
+    counter.increment();
+    console.log(counter.counter); // 2
+
+
+
+
+refer  https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a5fcc/
