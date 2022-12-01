@@ -1,0 +1,44 @@
+What is Node.js?
+1) Node.js is an open source, cross-platform runtime environment for developing server-side and 
+    networking applications. 
+2) Node.js was developed by Ryan Dahl in 2009 and its latest version is v0.10.36.
+3) Node.js also provides a rich library of various JavaScript modules which simplifies the development of 
+    web applications using Node.js to a great extent.
+    ***                                                   ****
+       Node.js = Runtime Environment + JavaScript Library
+
+
+
+
+Features of Node.js
+Following are some of the important features that make Node.js the first choice of software architects.
+
+1) Asynchronous and Event Driven − All APIs of Node.js library are asynchronous, that is, non-blocking. 
+    It essentially means a Node.js based server never waits for an API to return data. The server moves to the 
+    next API after calling it and a notification mechanism of Events of Node.js helps the server to get a 
+    response from the previous API call.
+
+2) Very Fast − Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.
+
+3)Single Threaded but Highly Scalable − Node.js uses a single threaded model with event looping. 
+    Event mechanism helps the server to respond in a non-blocking way and makes the server highly scalable 
+    as opposed to traditional servers which create limited threads to handle requests. Node.js uses a single 
+    threaded program and the same program can provide service to a much larger number of requests than 
+    traditional servers like Apache HTTP Server.
+
+4) No Buffering − Node.js applications never buffer any data. These applications simply output the data in chunks.
+
+5) License − Node.js is released under the MIT license.
+
+
+
+Who Uses Node.js?
+Following is the link on github wiki containing an exhaustive list of projects, application and companies which 
+are using Node.js. This list includes eBay, General Electric, GoDaddy, Microsoft, PayPal, Uber, Wikipins, Yahoo!, 
+and Yammer to name a few.
+
+
+
+*NVM is a node.js version manager. It provides easy installation, switching between versions and 
+retains globally installed packages for each version. 
+*NPM is a package manager, which help you install libraries, plugins, frameworks and applications.
