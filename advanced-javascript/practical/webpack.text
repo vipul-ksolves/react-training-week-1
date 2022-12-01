@@ -1,0 +1,122 @@
+Webpack is a module bundler. It takes disparate dependencies, creates modules for them and bundles the entire network up into manageable output files. This is especially useful for Single Page Applications (SPAs), which is the defacto standard for Web Applications today.
+
+Let’s assume we have an application that can perform two simple mathematical tasks — sum and multiply. We decide to split these functions into separate files for easier maintenance:
+
+
+-> index.html
+
+<html>
+<head>
+    <script src="src/sum.js"></script>
+    <script src="src/multiply.js"></script>
+    <script src="src/index.js"></script>
+</head>
+</html>
+
+
+-> index.js
+
+var totalMultiply = multiply(5, 3);
+var totalSum = sum(5, 3);
+console.log('Product of 5 and 3 = ' + totalMultiply);
+console.log('Sum of 5 and 3 = ' + totalSum);
+
+
+-> multiply.js
+
+var multiply = function (a, b) {
+    var total = 0;
+    for (var i = 0; i < b; i++) {
+        total = sum(a, total);
+    }
+    return total;
+};
+
+
+-> sum.js
+var sum = function (a, b) {
+    return a + b;
+};
+
+From the above code you can see that both multiply.js and index.js depend on sum.js
+
+
+##  Reducing Dependency HTTP Traffic with Bundling
+
+If we take a look at index.html, we can see that we’ll need to pull down 3 separate files. This is fine but now imagine again that we have many dependencies — the end user would have to wait until all of the dependencies had been downloaded before the main application could run.
+
+The other main feature Webpack offers is bundling. That is, Webpack can pull all of our dependencies into a single file, meaning that only one dependency would need to be downloaded.
+
+Image  https://cdn-images-1.medium.com/max/800/0*h1oaGZlHh88jEEtv.png
+
+
+## Webpack — Initial Configuration
+
+    For the above to work, we need to do some initial Webpack configuration:
+    var path = require('path');
+        module.exports = {
+        entry: './src/index.js',    
+        output: {
+            path: path.resolve(__dirname, './dist/),
+            filename: 'bundle.js
+        }
+    }
+
+
+## Looking at bundle.js
+
+// the webpack bootstrap
+(function (modules) {
+    // The module cache
+    var installedModules = {};
+    // The require function
+    function __webpack_require__(moduleId) {
+        // Check if module is in cache
+        // Create a new module (and put it into the cache)
+        // Execute the module function
+        // Flag the module as loaded
+        // Return the exports of the module
+    }
+
+
+    // expose the modules object (__webpack_modules__)
+    // expose the module cache
+    // Load entry module and return exports
+    return __webpack_require__(0);
+})
+/************************************************************************/
+([
+    // index.js - our application logic
+    /* 0 */
+    function (module, exports, __webpack_require__) {
+        var multiply = __webpack_require__(1);
+        var sum = __webpack_require__(2);
+        var totalMultiply = multiply(5, 3);
+        var totalSum = sum(5, 3);
+        console.log('Product of 5 and 3 = ' + totalMultiply);
+        console.log('Sum of 5 and 3 = ' + totalSum);
+    },
+    // multiply.js
+    /* 1 */
+    function (module, exports, __webpack_require__) {
+        var sum = __webpack_require__(2);
+        var multiply = function (a, b) {
+            var total = 0;
+            for (var i = 0; i < b; i++) {
+                total = sum(a, total);
+            }
+            return total;
+        };
+        module.exports = multiply;
+    },
+    // sum.js
+    /* 2 */
+    function (module, exports) {
+        var sum = function (a, b) {
+            return a + b;
+        };
+        module.exports = sum;
+    }
+]);
+
+
