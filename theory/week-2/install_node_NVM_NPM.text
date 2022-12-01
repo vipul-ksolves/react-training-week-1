@@ -1,0 +1,23 @@
+Download the Windows installer from Nodejs.org
+
+By default npm will be install with Node
+
+We can install the NVM => It provides easy installation, switching between versions and 
+retains globally installed packages for each version. 
+
+some important commands
+    -nvm install --lts       (install the latest LTS version of Node.js on your system)
+    -nvm alias default <node-version>
+    -nvm install <node-version>
+    -nvm list
+    -nvm use <node-version>
+    -nvm uninstall <node-version>  (uninstall Node versions that are no longer required)
+                       * You cannot remove a version you are currently using, 
+                         so you must switch to a different version first.
+
+
+
+refer the article for nvm for windows
+https://medium.com/@tysonpaul89/maintain-multiple-versions-of-node-js-in-windows-operating-system-using-nvm-3c6bf5b63f29
+or
+https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/
