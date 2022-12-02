@@ -1,0 +1,19 @@
+** React is a declarative, efficient, and flexible JavaScript library for building user interfaces. 
+** ReactJS is an open-source, component-based front-end library responsible only for the view layer of the application. It is maintained by Facebook.
+** It is an MVC architecture-based library that plays the role of “C” which means control.
+
+
+## Features of React.js: 
+There are unique features are available on React because that it is widely popular.
+
+1) Use JSX: It is faster than normal JavaScript as it performs optimizations while translating to regular JavaScript. It makes it easier for us to create templates.
+
+2) Virtual DOM: Virtual DOM exists which is like a lightweight copy of the actual DOM. So for every object that exists in the original DOM, there is an object for that in React Virtual DOM. It is exactly the same, but it does not have the power to directly change the layout of the document. Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen.
+
+3) One-way Data Binding: This feature gives you better control over your application.
+
+4) Component: A Component is one of the core building blocks of React. In other words, we can say that every application you will develop in React will be made up of pieces called components. Components make the task of building UIs much easier. You can see a UI broken down into multiple individual pieces called components and work on them independently and merge them all in a parent component which will be your final UI.
+
+5) Performance: React.js use JSX, which is faster compared to normal JavaScript and HTML. Virtual DOM is a less time taking procedure to update webpages content.
+
+
