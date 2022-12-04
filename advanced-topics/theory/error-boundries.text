@@ -1,0 +1,151 @@
+### Error Boundaries: 
+
+Error Boundaries basically provide some sort of boundaries or checks on errors, 
+They are React components that are used to handle JavaScript errors in their child component tree.
+
+React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI. 
+It catches errors during rendering, in lifecycle methods, etc.
+
+
+** When you are writing a react application you have two ways to handling errors:
+
+1. Using try/catch block in each component
+2. Using React Error Boundary which is only available in class Component 
+
+1) Try/catch
+
+import * as React from 'react'
+import ReactDOM from 'react-dom'
+
+function ErrorHandler({error}) {
+  return (
+    <div role="alert">
+      <p>An error occurred:</p>
+      <pre>{error.message}</pre>
+    </div>
+  )
+}
+
+function City({name}) {
+  try {
+    return <div>Hello, visit {name.toUpperCase()}</div>
+  } catch (error) {
+    return <ErrorHandler error={error} />
+  }
+}
+
+function Country({capital}) {
+  try {
+    return <div>Hello, visit {capital.toUpperCase()}</div>
+  } catch (error) {
+    return <ErrorHandler error={error} />
+  }
+}
+
+function App() {
+  return (
+    <div>
+      <Country />
+      <City />
+    </div>
+  )
+}
+
+This seems ok, but repetitive. What if we want the parent component to handle the error catching for us. Wrapping the parent component App in a try/catch block will not work, due to the nature of how React calls functions. That is when React Error Boundary comes in.
+
+As at React 17.0.2, Error Boundary works only in
+
+1. Class component
+2. and It must implement static getDerivedStateFromError() or componentDidCatch()
+
+** In order to use Error Boundary in Functional Component, I use react-error-boundary.
+
+
+import * as React from 'react'
+import ReactDOM from 'react-dom'
+import {ErrorBoundary} from 'react-error-boundary'
+
+
+function ErrorHandler({error}) {
+  return (
+    <div role="alert">
+      <p>An error occurred:</p>
+      <pre>{error.message}</pre>
+    </div>
+  )
+}
+
+function City({name}) {
+    return <div>Hello, visit {name.toUpperCase()}</div>
+}
+
+function Country({capital}) {
+    return <div>Hello, visit {capital.toUpperCase()}</div>
+}
+
+function App() {
+  return (
+    <ErrorBoundary FallbackComponent={ErrorHandler}>
+      <Country />
+      <City />
+    </ErrorBoundary>
+  )
+}
+
+
+
+### Exceptions to Error handling
+
+Because react-error-boundary uses react error boundary in the background there are a few exceptions to the errors that can be handled.
+
+These errors are not handled by react-error-boundary
+
+Event handlers
+Asynchronous code (e.g. setTimeout or requestAnimationFrame callbacks)
+Server side rendering
+Errors thrown in the error boundary itself (rather than its children)
+
+
+### Error recovery
+This library offers an error recovery feature, that allow you to reset the state and bring back the components to a working point.
+
+function ErrorFallback({error, resetErrorBoundary}) {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  )
+}
+
+function Bomb() {
+  throw new Error('💥 CABOOM 💥')
+}
+
+function App() {
+  const [explode, setExplode] = React.useState(false)
+  return (
+    <div>
+      <button onClick={() => setExplode(e => !e)}>toggle explode</button>
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => setExplode(false)}
+        resetKeys={[explode]}
+      >
+        {explode ? <Bomb /> : null}
+      </ErrorBoundary>
+    </div>
+  )
+}
+
+
+
+The ErrorBoundary component accepts two other props to help recover from a state of error. The first prop onReset receives a function which will be triggered when resetErrorBoundary of the FallbackComponent is called. The onReset function is used to reset the state and perform any cleanup that will bring the component to a working state.
+The other prop of ErrorBoundary is resetKeys, it accepts an array of elements that will be checked when an error has been caught. In case any of these elements changes, the ErrorBoundary will reset the state and re-render the component.
+
+Handling error in React functional components should be a breeze for anyone using the react-error-boundary library. It provides the following features:
+
+    Fallback components to display incase of error
+    Granular capturing of error at component level
+    Recovery of error using a function or by resetting the elements causing the component to fail.
