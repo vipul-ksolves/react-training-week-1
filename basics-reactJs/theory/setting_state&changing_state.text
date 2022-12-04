@@ -1,0 +1,75 @@
+State allows us to manage changing data in an application. It's defined as an object where we define key-value pairs specifying various data we want to track in the application.
+
+There are mainly two ways of creating a component in React:
+
+class-based component
+functional component
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      counter: 0
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.state.counter = this.state.counter + 1;
+
+    console.log("counter", this.state.counter);
+  }
+
+  render() {
+    const { counter } = this.state;
+
+    return (
+      <div>
+        <button onClick={this.handleClick}>Increment counter</button>
+        <div>Counter value is {counter}</div>
+      </div>
+    );
+  }
+}
+
+
+
+Syntax of setState
+To make the state change, React gives us a setState function that allows us to update the value of the state.
+
+        setState(updater, [callback])
+
+* updater can either be a function or an object
+* callback is an optional function that gets executed once the state is successfully updated
+
+
+### How to Use State in Functional Components in React
+
+Functional components are similar to class components, except that they do not have state and lifecycle methods. This is why you may have heard them called stateless functional components.
+
+These components only accept props and return some JSX.
+
+Functional components make code shorter and easier to understand and test.
+
+They're also a little faster to execute, as they don't have lifecycle methods. They also don't have the extra data brought by the React.Component class which we extend in class based components.
+
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+
+const App = () => {
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <div>
+      <div>
+        <p>Counter value is: {counter} </p>
+        <button onClick={() => setCounter(counter + 1)}>Increment</button>
+      </div>
+    </div>
+  );
+};
