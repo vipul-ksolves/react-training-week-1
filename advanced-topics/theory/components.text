@@ -1,0 +1,177 @@
+## What are React Components?
+
+* React components are independent and reusable code. 
+* They are the building blocks of any React application.  
+* Components usually come in two types, functional components and class components, 
+
+## Types of React Components Discussed
+1. Functional Components
+2. Class Components
+3. Pure Components
+4. Higher-Order Components
+5. Dumb Components
+6. Smart Components
+7. Presentational Components
+8. Container components
+
+
+
+1) Functional Components
+
+* Functional components are some of the more common components that will come across while working in React. 
+* Functional component is basically a JavaScript/ES6 function
+* Always starts with a capital letter (naming convention)
+* These are simply JavaScript functions. 
+* We can create a functional component to React by writing a JavaScript function. 
+* These functions may or may not receive data as parameters. 
+* Functional Components return value is the JSX code to render to the DOM tree.
+
+
+
+            import React from 'react';
+            
+            const Welcome=()=>
+            {
+            return (
+                <h1>Welcome to GeeksforGeeks</h1>
+                );
+            }
+            
+            const functionExample=()=>
+            {
+                return (
+                <Welcome/>
+                );
+            }
+            
+            export default functionExample;
+
+
+2) Class Components
+Class components have previously been the most commonly used among the four component types. This is because class components are able to do everything a functional component do but more. It can utilize the main functions of React, state, props, and lifecycle methods. Unlike functional components, class components are consist of … well, a class.
+
+// Class Component Example
+import React from 'react';
+class HelloWorld extends React.Component {
+   render() {
+      return (
+         <div>
+            <p>Hello World!</p>
+         </div>
+      )
+   }
+}
+export default HelloWorld
+
+
+3) Pure Component
+
+* Pure components are primarily used to provide optimizations. 
+* They are the simplest and fastest components we can write. They do not depend or    modify the state of variables outside its scope. Hence, why pure components can       replace simple functional components.
+* Pure components are like better functional components
+
+
+            import React from ‘react’;
+            
+            export default class Test extends React.PureComponent{
+            render(){
+                return <h1>Welcome to GeeksforGeeks</h1>;
+            }
+            }
+
+
+But, one major difference between a regular React.Component and a React.PureComponent is that pure components perform shallow comparisons on state change. 
+Pure components take care of shouldComponentUpdate() by itself. If the previous state and/or props are the same as the next, the component is not re-rendered.
+
+React Components are usually re-rendered when:
+
+setState() is called
+props values are updated
+forceUpdate() is called
+
+
+4) Higher-Order Components
+Higher order components, or known under the abbreviation HOCs are the component which takes a component as input and returns the component as output but with extended functionalities. 
+React Higher-Order Components are popular advanced React pattern to deploy reusable logic and functionality across React components.
+Below shows an example higher-order component that transforms and returns usernames in uppercase:
+
+                    const hoc = (MyComponent) => (props) => {
+                    return (
+                        <div>
+                        <MyComponent {...props}>
+                            {props.children.toUpperCase()}
+                        </MyComponent>
+                        </div>
+                    )
+                    }
+
+
+5) Dumb Components
+* A Dumb Component can very easily be defined as a stateless functional component. 
+* A stateless component is much more efficient than a stateful one, because it doesn't require as many computer resources to render (memory, CPU, and GPU in terms of graphic-intensive apps). 
+
+Below shows an example of dumb component in React:
+
+        export default Title => () => (
+            <h1>I am Title</h1>
+        );
+
+
+
+6) Smart Components
+* A Smart Component is any class component that manages its own state. 
+* Smart Components are stateful components and works similar to class components. 
+* When working with Babel or ES6-style React, we’ve come to know this as any class-like object that extends Component.
+* This includes either React.Component or in our case Other.Component. 
+
+Below shows an example of smart component in React:
+
+    export default title => class MyComponent extends Other.Component {
+    render() {
+        return (
+        <h1>I am Title</h1>
+        );
+    }
+    }
+
+
+7) Presentational Components
+* The presentation component is often called as stateless functional component that takes props and renders UI. 
+* A stateless functional components are plain JavaScript functions that do not have states. 
+* The components that receive state from the higher-order component will function as presentational components. State gets passed to them and they conditionally render UI based on it. 
+* They do not bother with the management of state. 
+* Presentational Component mainly concerned with how things look. 
+
+Below shows an example of presentational component in React:
+
+    const List = props =>  
+        (<ul>    
+            {props.list.map(user =>  
+                (<li>{items}</li>    )) 
+            } 
+        </ul>)
+
+
+8) Container components
+* Container component is a class component that provides the data and behavior to presentational or other container components. 
+* A container does data fetching and then renders its corresponding sub-component. 
+* This component mainly concerned with how things work. 
+* Container components call flux actions and provides these as callbackss to the presentational component. 
+
+Below shows an example of presentational component in React:
+
+    class ListContainer extends React.Component{
+    constructor()  
+    {  
+        this.state = {    
+        items: []     
+        } 
+    }  
+    componentDidMount() {    
+        axios.get('/list').then(
+        items=>this.setState({ list: items}))     
+        )  
+    } 
+    render() { 
+    return<Usersusers={this.state.items} />   
+    }}
