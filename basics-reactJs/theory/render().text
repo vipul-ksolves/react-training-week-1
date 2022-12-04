@@ -1,0 +1,53 @@
+React.js library has two components:
+
+1. Class components
+2. Functional Components
+
+Class components uses render function. The ReactDOM.render() function takes two arguments, HTML code and an HTML element.
+
+### Purpose of render():
+
+* React renders HTML to the web page by using a function called render().
+* The purpose of the function is to display the specified HTML code inside the specified HTML element.
+* In the render() method, we can read props and state and return our JSX code to the root component of our app.
+* In the render() method, we cannot change the state, and we cannot cause side effects( such as making an HTTP request to the webserver).
+
+
+
+
+
+
+class App extends Component {
+state = {
+    PawriDays: [
+        { id: '123s', Day: 'Monday' },
+        { id: '234r', Day: 'Saturday' },
+        { id: '12d5', Day: 'Sunday' }
+    ]
+}
+  
+render() {
+    const PartyDays = this.state.PawriDays.length
+    const style = {
+    'textAlign': 'center',
+    'color': 'green'
+    }
+  
+    // Return JSX code
+    return (
+    <div style={style}>
+        <h1>I am User</h1>
+        <p> We party: {PartyDays} days a week </p>
+    </div>
+    );
+}
+}
+
+export default App;
+
+
+
+
+//Output
+I am User
+We party: 3 days a week
