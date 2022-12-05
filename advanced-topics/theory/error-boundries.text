@@ -149,3 +149,10 @@ Handling error in React functional components should be a breeze for anyone usin
     Fallback components to display incase of error
     Granular capturing of error at component level
     Recovery of error using a function or by resetting the elements causing the component to fail.
+
+
+
+
+
+    Refer this article
+    https://dev.to/edemagbenyo/handle-errors-in-react-components-like-a-pro-l7l

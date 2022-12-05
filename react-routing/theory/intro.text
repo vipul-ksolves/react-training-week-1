@@ -1,0 +1,39 @@
+React Router is a standard library for routing in React. 
+It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.
+
+** After installing react-router-dom, add its components to your React application.
+
+Adding React Router Components: The main Components of React Router are:
+
+1. BrowserRouter: 
+    BrowserRouter is a router implementation that uses the HTML5 history API(pushState, replaceState and the popstate event) to keep your UI in sync with the URL. 
+    It is the parent component that is used to store all of the other components.
+2. Routes: 
+    It’s a new component introduced in the v6 and a upgrade of the component. 
+    The main advantages of Routes over Switch are:
+       a. Relative s and s
+       b. Routes are chosen based on the best match instead of being traversed in order.
+3. Route: 
+    Route is the conditionally shown component that renders some UI when its path matches the current URL.
+4. Link: 
+    Link component is used to create links to different routes and implement navigation around the application. It works like HTML anchor tag.
+  
+
+        import {
+            BrowserRouter as Router,
+            Routes,
+            Route,
+            Link
+        } from 'react-router-dom';
+
+
+** Let us now try to understand the props associated with the Route component.
+
+1. exact: 
+    It is used to match the exact value with the URL. For Eg., exact path=’/about’ will only render the component if it exactly matches the path but if we remove exact from the syntax, then UI will still be rendered even if the structure is like /about/10.
+2. path: Path specifies a pathname we assign to our component.
+3. element: It refers to the component which will render on matching the path.
+
+
+*** Note: 
+    Switch groups together several routes, iterates over them and finds the first one that matches the path. Thereby, the corresponding component to the path is rendered.
