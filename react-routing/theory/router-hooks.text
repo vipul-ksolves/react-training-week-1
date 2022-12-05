@@ -1,0 +1,112 @@
+## how to pass data from one route to another in react?
+
+version 5.X
+
+Let's suppose we have two Components first and second. The first has the link which will target the second component.
+
+The first Component where the link is, by clicking the link you will go to the target path as in my case it is:"/details".
+
+import React from 'react';
+import {Link} from 'react-router-dom';
+
+export default function firstComponent() {
+return(
+<>
+    <Link to={{
+      pathname: '/details',
+      state: {id: 1, name: 'sabaoon', shirt: 'green'}
+    }} >Learn More</Link>
+</>
+)
+}
+Now in the second Component you can access the passed object as:
+
+import React from 'react'
+
+
+export default class Detials extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={
+            value:this.props.location.state,
+        }
+
+    }
+
+
+alertMessage(){
+       console.log(this.props.location.state.id);
+    }
+
+render(){
+return (
+
+    <>
+     {/* the below is the id we are accessing */}
+
+      hay! I am detail no {this.props.location.state.id} and my name is 
+      {this.props.location.state.name}
+
+      <br/>
+      <br/>
+
+ {/* press me to see the log in your browser console */}
+<button onClick={()=>{this.alertMessage()}}>click me to see log</button>
+
+    </>
+
+    )
+}
+
+}
+note:In version 6 of react-router-dom the above method won't work on class components though you can use functional components of react by using useLocation hook and then you can draw the state object through that location in another component.
+
+version 6
+
+How to achieve the same using hooks v6 of react-router-dom
+
+Let's suppose we have two functional components, first component A, second component B. The component A wants to share data to component B.
+
+usage of hooks: (useLocation,useNavigate)
+
+import {Link, useNavigate} from 'react-router-dom';
+
+function ComponentA(props) {
+
+  const navigate = useNavigate();
+
+  const toComponentB=()=>{
+navigate('/componentB',{state:{id:1,name:'sabaoon'}});
+  }
+
+  return (
+   <>
+<div> <a onClick={()=>{toComponentB()}}>Component B<a/></div>
+</>
+  );
+
+
+}
+
+
+export default ComponentA;
+Now we will get the data in Component B.
+
+import {useLocation} from 'react-router-dom';
+
+ function ComponentB() {
+
+    const location = useLocation();
+   
+        return (
+
+            <>
+               
+<div>{location.state.name}</div>
+
+            </>
+        )
+    }
+
+export default ComponentB;
